@@ -10,14 +10,18 @@ RUN a2enmod rewrite
 
 # Allow .htaccess overrides
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 74eeab59e785f9879c7d0435b5789fd55b4e4e4c
 # Copy app files
 COPY . /var/www/html/
 
 # Fix permissions
 RUN chown -R www-data:www-data /var/www/html \
 && chmod -R 755 /var/www/html
+<<<<<<< HEAD
 
 # Point Apache document root to public/
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
@@ -29,3 +33,6 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot ${APACHE_DOCUMENT_ROOT}|g'
 EXPOSE 80
 
 
+=======
+EXPOSE 80
+>>>>>>> 74eeab59e785f9879c7d0435b5789fd55b4e4e4c
